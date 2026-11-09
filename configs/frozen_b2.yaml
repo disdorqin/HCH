@@ -1,0 +1,30 @@
+# Documentary manifest, not a replacement for frozen training code.
+method: HCH-S1-B2
+task:
+  context_hours: 168
+  horizon_hours: 24
+  historical_days: 7
+network:
+  day_projection_input: 72
+  projection_width: 32
+  gru_width: 32
+  gru_layers: 1
+  output_hours: 24
+  dropout: 0.0
+training:
+  optimizer: AdamW
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  gradient_clip: 1.0
+  max_steps: 1000
+  checkpoints_every: 25
+  inner_validation_last_fraction: 0.20
+  min_inner_validation_days: 5
+  min_inner_train_days: 15
+calibration:
+  type: pooled_chronological_oof_lower_weighted_median
+  magnitude_nonnegative: true
+  trainable_amplitude_head: false
+  learned_gate: false
+  test_time_adaptation: false
+source: docs/PROVENANCE.md

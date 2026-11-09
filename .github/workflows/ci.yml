@@ -1,0 +1,26 @@
+name: Core contract checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  scientific-contract:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install project
+        run: python -m pip install -e ".[test]"
+      - name: Run tests
+        run: python -m pytest -q
+      - name: Scan package contents
+        run: python scripts/release_audit.py
+
+# Note: private frozen-source equivalence is skipped on hosted CI when
+# HCH_SOURCE_ROOT is unavailable. CI PASS does NOT mean paper reproduction PASS.
