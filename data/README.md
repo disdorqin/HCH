@@ -1,6 +1,6 @@
-# Dataset interface (no redistributed data)
+# Dataset interface and source-attributed foreign data
 
-All datasets must be acquired from their respective official publishers and placed **outside this Git repository** or under an ignored local path.
+A publisher-permitted, attributed Australia NEM SA1 hourly file is included under [data/foreign/NEM_SA1](foreign/NEM_SA1/README.md). Other market datasets must be obtained from original publishers, using the [foreign data availability matrix](foreign/README.md), or kept in ignored local directories unless the rightsholder grants explicit redistribution permission.
 
 Expected forecast-repair cache fields (format contract; not fake sample data):
 
