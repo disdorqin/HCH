@@ -42,7 +42,7 @@ python scripts/hch_cli.py predict --issued eval_issued.npz --bundle bundle.npz -
 python scripts/hch_cli.py score --prediction predictions.npz --truth eval_truth.npz
 ```
 
-The quickstart uses synthetic data; the published market experiments use their original frozen-forecast inputs. Input formats and evaluation settings are described in the [documentation](docs/reproduce.md).
+The quickstart uses synthetic data; the published market experiments use their original frozen-forecast inputs. Input formats are described in the [data interface](data/README.md). Original four-forecaster issued-prediction caches and the complete 44-configuration replay pipeline are not included in this public release.
 
 ## Experimental Results
 

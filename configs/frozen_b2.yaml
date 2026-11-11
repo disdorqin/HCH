@@ -27,4 +27,4 @@ calibration:
   trainable_amplitude_head: false
   learned_gate: false
   test_time_adaptation: false
-source: docs/PROVENANCE.md
+source: frozen HCH-S1-B2 registered experimental configuration

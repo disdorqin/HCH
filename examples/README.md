@@ -23,4 +23,4 @@ The first command fits a source-aligned chronological direction estimator with t
 
 The second command replays MAE/RMSE by reading the already saved predictions and the separate outcomes. **This example demonstrates software compatibility, not 44-cell or 24-cell manuscript result reproduction.** The registered paper fitting rail is 0,25,...,1000; the short rail is used solely to keep this synthetic example quick.
 
-For actual market data acquisition and known missing Host-cache / as-of-field dependencies, see [data](../data/README.md) and [full reproduction scope](../docs/reproduce.md).
+For market data sources, the issued-cache format, and availability restrictions, see the [data interface](../data/README.md). The original Base forecast caches and full paper-benchmark replay are not included in this release.

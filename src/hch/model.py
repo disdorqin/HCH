@@ -1,6 +1,6 @@
 """Exact architecture of the registered HCH B2 direction estimator.
 
-Scientific source: frozen S1-B2 runner DailyPatchShape (SHA256 recorded in docs/PROVENANCE.md).
+Scientific source: frozen S1-B2 runner DailyPatchShape (provenance retained in the author research archive).
 The method's output is raw direction scores, not a forecast, learned amplitude, or verifier gate.
 """
 from __future__ import annotations
