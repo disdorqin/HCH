@@ -14,16 +14,20 @@ Source checkout: private author-owned research tree, configured locally through 
 
 ## Current package equivalence limits
 
-`src/hch/model.py` matches the frozen class constructor, feature segmentation and forward path. `calibration.py` reproduces the frozen nonnegative lower weighted-median convention. Unit tests cover controlled numeric equivalence against the frozen runner (when accessible). The public cache schema and timestamp/role checks are not yet proven end-to-end.
+`src/hch/model.py` matches the frozen class constructor, feature segmentation and forward path. `calibration.py` reproduces the frozen nonnegative lower weighted-median convention. Unit tests cover controlled numeric equivalence against the frozen runner (when accessible). The target-rejecting public cache schema, chronological TRAIN-only fit, synthetic-issued prediction and separate offline scoring have executable tests. The chronological S1-B2 fitting/OOF/full-refit implementation in `pipeline.py` has a synthetic end-to-end demonstration; it is not yet verified against matched original registered real-market fit/prediction caches.
+
+### Frozen state-normalization order repair (2026-11-11)
+
+The frozen runner's `fit_base_predict` computes forecast-state mean/std from **every row in the legal chronological fitting prefix**, then filters out rows lacking eligible direction targets. The original public `pipeline.py::_fit_one` incorrectly filtered those rows before computing state moments. This has been corrected **only in the public copy**: `sf_all` and prediction-state normalization now use the complete prefix; the eligible mask is subsequently applied to normalized training rows, preserving the frozen inner-tail split and checkpoint rail. The new `tests/test_state_normalization_source_order.py` includes three ineligible rows with intentionally shifted state covariates, directly checks unfiltered-prefix moment arrays and issued directions, and reproduces a 25-step probe, earliest checkpoint choice and identical-initialization final refit in an independent synthetic implementation. These tests demonstrate this specific source-order contract; they do not certify every real-market tensor or ten-seed output.
 
 ## Mandatory release gates
 
 1. All frozen SHA checks PASS; no methodology changes in the original research checkout.
 2. Test the clean core against original frozen outputs on matched, source-permitted forecast caches, not on invented market data.
-3. Implement and audit chronological B0--B4 fitting, inner-tail selection, deterministic reset/refit and exact full-fit checkpoint rules.
+3. B0--B4 fitting, inner-tail selection, same-initialization refits and exact full-fit rail are implemented and synthetic-tested; close the gate only with *original-cache* numerical checks for normalization, initialization, selected steps, fitted directions and issued scores.
 4. Reproduce at least the Table II/III/IV statistics from controlled publishable caches and resolve all peer-baseline licensing.
-5. Add actual data acquisition/download instructions, split manifests, disclosed dataset usage rights, measured runtime environment and actual commands.
+5. Source-based EPF download helper and executable package commands are present. Still require complete public-market processing/Host-cache generation and named as-of state manifest, dataset-specific licensing, GEFCom2014/DK1/NEM acquisition, and measured complete replay environment. A raw CSV download alone cannot reproduce a frozen Base forecast.
 6. Run public-artifact scan (private paths, user names, credentials, patient/company records, proprietary price tables, checkpoints, images).
-7. Obtain author approval of license and availability of complete artifacts. Only then create/push a public GitHub repository.
+7. Obtain author approval for code licence and public visibility, then perform an audited commit/push/release on the *existing* repository only. Keep missing original forecast-cache and baseline reproducibility gates explicitly NOT READY unless evidence closes them.
 
-**No raw datasets, checkpoints, or private market state have been copied by this project.**
+**One original public DE.csv source file (52,416 hourly rows) was downloaded into gitignored `data/public/DE.csv` for local acquisition testing. It is not part of the Git publication candidate. No private Chinese records, Base caches or checkpoints were copied into the public package.**

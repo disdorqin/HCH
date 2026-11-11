@@ -2,6 +2,15 @@
 data/*
 !data/README.md
 !data/.gitkeep
+!data/china/
+data/china/*
+!data/china/README.md
+!data/foreign/
+data/foreign/*
+!data/foreign/README.md
+!data/foreign/NEM_SA1/
+data/foreign/NEM_SA1/*
+!data/foreign/NEM_SA1/README.md
 *.csv
 *.parquet
 *.xlsx
@@ -23,6 +32,11 @@ data/*
 *.tar
 *.gz
 *.pdf
+!docs/supplement.pdf
+!data/foreign/NEM_SA1/SA1_2024_hourly.csv
+*.aux
+*.log
+*.out
 outputs/
 results/
 checkpoints/

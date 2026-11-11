@@ -1,6 +1,6 @@
-# Dataset interface and source-attributed foreign data
+# Dataset interface and foreign market data
 
-A publisher-permitted, attributed Australia NEM SA1 hourly file is included under [data/foreign/NEM_SA1](foreign/NEM_SA1/README.md). Other market datasets must be obtained from original publishers, using the [foreign data availability matrix](foreign/README.md), or kept in ignored local directories unless the rightsholder grants explicit redistribution permission.
+An author-transformed, AEMO-attributed NEM South Australia hourly 2024 CSV has been uploaded to the existing GitHub repository: [data/foreign/NEM_SA1](foreign/NEM_SA1/README.md). Other foreign datasets require source-level reuse rights; see [the market-by-market status](foreign/README.md). Non-redistributable observations stay under ignored local paths or are fetched by readers from original publishers.
 
 Expected forecast-repair cache fields (format contract; not fake sample data):
 
